@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-eks-assessment-v3
+  region: ap-south-1
+  version: "1.28"
+
+iam:
+  withOIDC: true
+
+managedNodeGroups:
+  - name: standard-workers
+    instanceType: t3.medium
+    desiredCapacity: 2
+    
+addons:
+  - name: aws-load-balancer-controller
+  - name: aws-ebs-csi-driver
